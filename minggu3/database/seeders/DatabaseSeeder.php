@@ -1,5 +1,11 @@
 <?php
 
+// selain menggunakan command:
+// php artisan db:seed
+// kita juga bisa menggunakan command:
+// php artisan db:seed --class=NamaSeeder
+// namun akan lebih efisien jika kita menaruh semua class Seeder dalam satu file yaitu DatabaseSeeder.php
+
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -12,11 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call(LevelSeeder::class); // untuk menambahkan data ke table m_level
+        $this->call(UserSeeder::class); // untuk menambahkan data ke table m_user
     }
 }
