@@ -54,7 +54,7 @@ dengan menggunakan `findOr` maka akan mengambil data dari database berdasarkan i
 ### 1️⃣2️⃣ Menggunakan $user = UserModel::findOr(20, ['username', 'nama'], function () { abort(404); }); ✅
 dengan menggunakan `findOr` maka akan mengambil data dari database berdasarkan id yang diinputkan, contoh $user = UserModel::findOr(20, ['username', 'nama'], function () { abort(404); }); tetapi pada kode saya, tidak ada data user yang memiliki id 20, jadi tidak ada data yang ditemukan
 
-![Hasil dengan findOr](Screenshot%20Laporan/Praktikum%202/no-11.png)
+![Hasil dengan findOr](Screenshot%20Laporan/Praktikum%202/no-12.png)
 
 
 
