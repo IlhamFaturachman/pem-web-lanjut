@@ -173,6 +173,23 @@ Dengan menambahkan proses hapus maka kita bisa menghapus data user tersebut.
 
 ![Hasil dengan hapus](Screenshot%20Laporan/Praktikum%202/2-6/20.png)
 
+---
+
+## 📌 Praktikum 2.7 - Relationships ✅
+
+### 3️⃣ Menambahkan relasi ✅
+Tampil semua data user saya yang mempunyai level 
+
+![Hasil dengan relasi](Screenshot%20Laporan/Praktikum%202/2-7/3.png)
+
+### 7️⃣ Menampilkan data level dari tabel berbeda dengan relasi ✅
+Dengan ditambahkannya relasi pada model, sekarang saya bisa mendapatkan data Level dari tabel level.
+
+![Hasil dengan relasi](Screenshot%20Laporan/Praktikum%202/2-7/7.png)
+
+
+
+
 
 
 
