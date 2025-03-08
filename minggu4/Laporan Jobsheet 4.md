@@ -83,6 +83,47 @@ Untuk menampilkan datanya, kita hanya perlu menghapus dd() dan mengganti dengan 
 
 ![Hasil dengan max](Screenshot%20Laporan/Praktikum%202/2-3/4.png)
 
+---
+
+## 📌 Praktikum 2.4 - Retrieving or Creating Models ✅
+
+### 3️⃣ Menggunakan firstOrCreate ✅
+Dengan menggunakan `firstOrCreate` maka akan mengambil data dari database berdasarkan id yang diinputkan, contoh $user = UserModel::firstOrCreate(['username' => 'manager'], ['nama' => 'Manager']); dan jika tidak ada data yang ditemukan, maka akan membuat data baru.
+
+![Hasil dengan firstOrCreate](Screenshot%20Laporan/Praktikum%202/2-4/3.png)
+
+### 5️⃣ Menggunakan firstOrCreate dengan data yang belum ada ✅
+Dengan menggunakan `firstOrCreate` maka akan mengambil data dari database berdasarkan id yang diinputkan, dan jika tidak ada data yang ditemukan, maka akan membuat data baru. disini saya mencoba cari data manager 22, namun tidak ada jadi diputuskan untuk membuat record baru pada database
+
+![Hasil dengan firstOrCreate](Screenshot%20Laporan/Praktikum%202/2-4/5.png)
+
+### 7️⃣ Menggunakan firstOrNew ✅
+Dengan menggunakan `firstOrNew` maka akan mengambil data dari database berdasarkan id yang diinputkan, dan jika tidak ada data yang ditemukan, maka akan membuat data baru.
+
+![Hasil dengan firstOrNew](Screenshot%20Laporan/Praktikum%202/2-4/7.png)
+
+### 9️⃣ Menggunakan firstOrNew dengan data yang belum ada tanpa save() ✅
+Dengan menggunakan `firstOrNew` maka akan mengambil data dari database berdasarkan id yang diinputkan, dan jika tidak ada data yang ditemukan, maka akan membuat data baru. disini saya mencoba cari data manager 33, namun tidak ada jadi diputuskan untuk membuat record baru pada database, tapi dikarenakan tidak ada save() maka tidak akan melakukan proses penginputan ke database, melainkan hanya datanya yang terkirim ke view
+
+![Hasil dengan firstOrNew](Screenshot%20Laporan/Praktikum%202/2-4/9.png)
+
+### 1️⃣1️⃣ Menggunakan firstOrNew dengan data yang belum ada dengan save() ✅
+Dengan menggunakan `firstOrNew` maka akan mengambil data dari database berdasarkan id yang diinputkan, dan jika tidak ada data yang ditemukan, maka akan membuat data baru. disini saya mencoba cari data manager 33, namun tidak ada jadi diputuskan untuk membuat record baru pada database, nah karena ada save() maka akan melakukan proses penginputan ke database
+
+![Hasil dengan firstOrNew](Screenshot%20Laporan/Praktikum%202/2-4/11.png)
+
+---
+
+✅ **Kesimpulan**:  
+- `firstOrCreate` digunakan untuk mengambil data dari database berdasarkan id yang diinputkan, dan jika tidak ada data yang ditemukan, maka akan membuat data baru.  
+- `firstOrNew` digunakan untuk mengambil data dari database berdasarkan id yang diinputkan, dan jika tidak ada data yang ditemukan, maka akan membuat data baru, dengan catatan harus menggunakan `save()`.  
+- `save()` digunakan untuk menyimpan data ke database.
+
+
+
+
+
+
 
 
 
