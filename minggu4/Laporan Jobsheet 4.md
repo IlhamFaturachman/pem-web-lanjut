@@ -139,6 +139,44 @@ Dengan menggunakan `wasChanged` yang akan mengembalikan boolean true jika ada at
 - `isDirty` digunakan untuk mengembalikan boolean true jika ada attribute yang berubah, dan false jika tidak ada attribute yang berubah.  
 - `wasChanged` digunakan untuk mengembalikan boolean true jika ada attribute yang berubah, dan false jika tidak ada attribute yang berubah.
 
+---
+
+## 📌 Praktikum 2.6 - CRUD ✅
+
+### 3️⃣ Menambahkan tombol tambah, edit, dan hapus ✅
+Dengan menambahkan tombol tambah, edit, dan hapus maka akan muncul halaman baru ketika klik tombol tambah, edit, dan hapus.
+
+![Hasil dengan tambah](Screenshot%20Laporan/Praktikum%202/2-6/3.png)
+
+### 7️⃣ Menambahkan halaman tambah ✅
+Dengan menambahkan halaman tambah maka akan muncul halaman baru ketika klik tombol tambah.
+
+![Hasil dengan tambah](Screenshot%20Laporan/Praktikum%202/2-6/7.png)
+
+### 1️⃣0️⃣ Menambahkan proses tambah ✅
+Pada halaman tambah, akan muncul form untuk menambahkan data user. lalu setelah itu kita bisa mengisi data user tersebut. jika sudah diisi, maka datanya akan di simpan ke database.
+
+![Hasil dengan tambah](Screenshot%20Laporan/Praktikum%202/2-6/10.png)
+
+### 1️⃣4️⃣ Menambahkan halaman edit ✅
+Dengan menambahkan halaman edit maka akan muncul halaman baru ketika klik tombol edit.
+
+![Hasil dengan edit](Screenshot%20Laporan/Praktikum%202/2-6/14.png)
+
+### 1️⃣7️⃣ Menambahkan proses edit ✅
+Dengan menambahkan proses edit maka kita bisa mengedit data user tersebut sesuai dengan data yang diinginkan.
+
+![Hasil dengan edit](Screenshot%20Laporan/Praktikum%202/2-6/17.png)
+
+### 2️⃣0️⃣ Menambahkan proses hapus ✅
+Dengan menambahkan proses hapus maka kita bisa menghapus data user tersebut.
+
+![Hasil dengan hapus](Screenshot%20Laporan/Praktikum%202/2-6/20.png)
+
+
+
+
+
 
 
 
