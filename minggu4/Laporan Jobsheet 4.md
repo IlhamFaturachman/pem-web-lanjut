@@ -69,6 +69,20 @@ Dengan menggunakan `findOrFail` maka akan mengambil data dari database berdasark
 
 ![Hasil dengan findOr](Screenshot%20Laporan/Praktikum%202/2-2/5.png)
 
+---
+
+## 📌 Praktikum 2.3 - Retrieving Aggregations ✅
+
+### 2️⃣ Menampilkan jumlah user berdasarkan level_id ✅
+Dengan menggunakan `count` maka akan menghitung jumlah data user berdasarkan level_id. dan karena kita menggunakan die dump, atau dd() pada laravel, otomatis maka prosesnya akan terhenti ketika dd() berlangsung.
+
+![Hasil dengan count](Screenshot%20Laporan/Praktikum%202/2-3/2.png)
+
+### 4️⃣ Menampilkan jumlah user pada view ✅
+Untuk menampilkan datanya, kita hanya perlu menghapus dd() dan mengganti dengan return view. lalu sesuaikan halaman bladenya agar sesuai dengan data yang diinginkan.
+
+![Hasil dengan max](Screenshot%20Laporan/Praktikum%202/2-3/4.png)
+
 
 
 
