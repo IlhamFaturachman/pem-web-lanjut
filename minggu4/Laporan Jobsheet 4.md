@@ -119,6 +119,27 @@ Dengan menggunakan `firstOrNew` maka akan mengambil data dari database berdasark
 - `firstOrNew` digunakan untuk mengambil data dari database berdasarkan id yang diinputkan, dan jika tidak ada data yang ditemukan, maka akan membuat data baru, dengan catatan harus menggunakan `save()`.  
 - `save()` digunakan untuk menyimpan data ke database.
 
+---
+
+## 📌 Praktikum 2.5 - Attribute changes ✅
+
+### 2️⃣ Menggunakan $user->isDirty(); ✅
+Dengan menggunakan `isDirty` yang akan mengembalikan boolean true jika ada attribute yang berubah, dan false jika tidak ada attribute yang berubah.
+
+![Hasil dengan isDirty](Screenshot%20Laporan/Praktikum%202/2-5/2.png)
+
+### 4️⃣ Menggunakan $user->wasChanged(); ✅
+Dengan menggunakan `wasChanged` yang akan mengembalikan boolean true jika ada attribute yang berubah, dan false jika tidak ada attribute yang berubah. dalam hal ini, username berubah menjadi manager11.
+
+![Hasil dengan wasChanged](Screenshot%20Laporan/Praktikum%202/2-5/4.png)
+
+---
+
+✅ **Kesimpulan**:  
+- `isDirty` digunakan untuk mengembalikan boolean true jika ada attribute yang berubah, dan false jika tidak ada attribute yang berubah.  
+- `wasChanged` digunakan untuk mengembalikan boolean true jika ada attribute yang berubah, dan false jika tidak ada attribute yang berubah.
+
+
 
 
 
