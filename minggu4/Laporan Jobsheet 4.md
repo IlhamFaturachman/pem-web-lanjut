@@ -56,6 +56,21 @@ dengan menggunakan `findOr` maka akan mengambil data dari database berdasarkan i
 
 ![Hasil dengan findOr](Screenshot%20Laporan/Praktikum%202/no-12.png)
 
+---
+
+## 📌 Praktikum 2.2 - Not Found Exception ✅
+
+### 3️⃣ Menggunakan $user = UserModel::findOrFail($id); ✅
+Dengan menggunakan `findOrFail` maka akan mengambil data dari database berdasarkan id yang diinputkan, contoh $user = UserModel::findOrFail(1);
+
+![Hasil dengan findOr](Screenshot%20Laporan/Praktikum%202/2-2/2.png)
+
+### 5️⃣ Contoh error gagal mendapat data ✅
+
+![Hasil dengan findOr](Screenshot%20Laporan/Praktikum%202/2-2/5.png)
+
+
+
 
 
 
