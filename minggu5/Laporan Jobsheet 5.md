@@ -35,3 +35,12 @@ dengan menggunakan KategoriModel::create() pada controller kategori yang ada pad
 
 ![Hasil dengan insert data baru ke database](Screenshot%20Laporan/Praktikum3/praktikum3.png)
 
+
+## 📌 Tugas Praktikum
+
+### 1️⃣ Menambahkan tombol untuk mengarahkan ke halaman create ✅
+
+![Hasil dengan tombol create](Screenshot%20Laporan/Tugas%20Praktikum/TP1.png)
+
+
+
