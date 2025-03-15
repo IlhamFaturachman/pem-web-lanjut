@@ -7,9 +7,11 @@
     },
     "devDependencies": {
         "axios": "^1.6.4",
+        "laravel-datatables-vite": "^0.6.1",
         "laravel-vite-plugin": "^1.0.0",
         "prettier": "^3.5.3",
         "prettier-plugin-blade": "^2.1.21",
+        "sass": "^1.85.1",
         "vite": "^5.0.0"
     }
 }
