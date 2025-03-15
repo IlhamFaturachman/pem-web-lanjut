@@ -24,4 +24,14 @@ Dengan menggunakan `composer require yajra/laravel-datatables` maka akan mendown
 ### 2️⃣ Integrasi DataTable ✅
 dengan menggunakan perintah `php artisan make:datatables KategoriDataTable` maka akan membuat file `KategoriDataTable.php` di dalam folder `app/DataTables`. dan itu bisa digunakan untuk menampilkan data kategori dalam tabel.
 
-![Hasil dengan composer](Screenshot%20Laporan/Praktikum2/praktikum2.png)
+![Hasil dengan DataTable](Screenshot%20Laporan/Praktikum2/praktikum2.png)
+
+---
+
+## 📌 Praktikum 3 - Melakukan Proses create pada tabel Kategori dari datatable
+
+### 1️⃣ Melakukan Proses create pada tabel Kategori dari datatable ✅
+dengan menggunakan KategoriModel::create() pada controller kategori yang ada pada function store, kita bisa menambahkan data kategori baru ke dalam database.
+
+![Hasil dengan insert data baru ke database](Screenshot%20Laporan/Praktikum3/praktikum3.png)
+
