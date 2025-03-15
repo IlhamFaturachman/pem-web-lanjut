@@ -47,5 +47,11 @@ dengan mengedit file adminlte, dan menambahkan opsi ke halaman kategori, saya bi
 
 ![Hasil dengan tombol kategori](Screenshot%20Laporan/Tugas%20Praktikum/TP2.png)
 
+### 3️⃣ Menambahkan tombol edit pada tabel dan menambahkan proses edit ✅
+
+![Hasil dengan tombol edit](Screenshot%20Laporan/Tugas%20Praktikum/TP3.png)
+
+
+
 
 
