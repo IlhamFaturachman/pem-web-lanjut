@@ -42,5 +42,10 @@ dengan menggunakan KategoriModel::create() pada controller kategori yang ada pad
 
 ![Hasil dengan tombol create](Screenshot%20Laporan/Tugas%20Praktikum/TP1.png)
 
+### 2️⃣ Menambahkan tombol pada sidebar untuk mengarahkan ke halaman kategori ✅
+dengan mengedit file adminlte, dan menambahkan opsi ke halaman kategori, saya bisa menambahkan tombol pada sidebar untuk mengarahkan ke halaman kategori.
+
+![Hasil dengan tombol kategori](Screenshot%20Laporan/Tugas%20Praktikum/TP2.png)
+
 
 
