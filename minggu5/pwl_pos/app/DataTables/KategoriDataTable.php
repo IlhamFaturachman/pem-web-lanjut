@@ -22,15 +22,18 @@ class KategoriDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function ($row) {
-                $editUrl = route('kategori.edit', $row->kategori_id);
-                $deleteUrl = route('kategori.destroy', $row->kategori_id);
-
-                return '<a href="' . $editUrl . '" class="btn btn-sm btn-primary">Edit</a> | 
-                    <button type="button" class="btn btn-sm btn-danger" onclick="deleteKategori(' . $row->kategori_id . ')">Delete</button>';
-            })
-            ->rawColumns(['action'])
-            ->setRowId('id');
+        ->addColumn('action', function ($row) {
+            $editUrl = route('kategori.edit', $row->kategori_id);
+            $deleteUrl = route('kategori.destroy', $row->kategori_id);
+        
+            return '<a href="' . $editUrl . '" class="btn btn-sm btn-primary">Edit</a> | 
+                    <button type="button" class="btn btn-sm btn-danger" onclick="if(confirm(\'Apakah Anda yakin ingin menghapus kategori ini?\')) { document.getElementById(\'delete-form-' . $row->kategori_id . '\').submit(); }">Delete</button>
+                    <form id="delete-form-' . $row->kategori_id . '" action="' . $deleteUrl . '" method="POST" style="display: none;">
+                        ' . csrf_field() . method_field('DELETE') . '
+                    </form>';
+        })
+        ->rawColumns(['action'])
+        ->setRowId('id');        
     }
 
 

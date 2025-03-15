@@ -51,6 +51,10 @@ dengan mengedit file adminlte, dan menambahkan opsi ke halaman kategori, saya bi
 
 ![Hasil dengan tombol edit](Screenshot%20Laporan/Tugas%20Praktikum/TP3.png)
 
+### 4️⃣ Menambahkan tombol delete pada tabel dan menambahkan proses delete ✅
+
+![Hasil dengan tombol delete](Screenshot%20Laporan/Tugas%20Praktikum/TP4.png)
+
 
 
 
