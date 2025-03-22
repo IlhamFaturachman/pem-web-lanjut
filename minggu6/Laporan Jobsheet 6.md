@@ -14,3 +14,11 @@ Pada praktikum kali ini, saya menambahkan form  untuk tambah user menggunakan Aj
 
 ![Modal Form ajax](Screenshot%20Laporan/Praktikum1/praktikum1.png)
 ![Succes Form ajax](Screenshot%20Laporan/Praktikum1/praktikum1-1.png)
+
+## 📌 Praktikum 2 - Membuat form edit user menggunakan ajax dan menambahkan proses dibelakangnya
+
+### 📝Deskripsi
+Pada praktikum kali ini, saya menambahkan form  untuk edit user menggunakan Ajax dan dikombinasikan dengan sweet alert yang sudah disediakan adminlte
+
+![Modal Form ajax](Screenshot%20Laporan/Praktikum2/praktikum2.png)
+![Succes Form ajax](Screenshot%20Laporan/Praktikum2/praktikum2-1.png)
