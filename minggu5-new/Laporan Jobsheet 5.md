@@ -14,4 +14,10 @@ Kita bisa mengunduh template adminLTE pada github officialnya, setelah itu kita 
 
 ![Hasil dengan composer](Screenshot%20Laporan/Praktikum1/image1.png)
 
+## 📌 Praktikum 2 - Instalasi Laravel DataTable  
+
+### 1️⃣ Menggunakan template yang sudah dibuat tadi
+Pada praktikum 1, kita sudah membuat template yang bisa digunakan pada tiap tiap halaman adminlte saya, contohnya ini saya menambahkan halaman welcome
+
+![Hasil dengan composer](Screenshot%20Laporan/Praktikum2/praktikum2.png)
 
