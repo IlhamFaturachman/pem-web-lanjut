@@ -48,4 +48,12 @@ Pada praktikum 3, saya sudah membuat fungsi delete user, lalu setelah itu saya b
 
 ![Hasil dengan composer](Screenshot%20Laporan/Praktikum3/praktikum5.png)
 
+## 📌 Praktikum 4 - Menerapkan filtering pada datatable
+
+### 1️⃣ Menambahkan filter pada halaman user
+Pada praktikum 4, saya sudah menambahkan filter pada halaman user, yaitu filter level user dan search
+
+![Hasil dengan composer](Screenshot%20Laporan/Praktikum4/praktikum1.png)
+
+
 
