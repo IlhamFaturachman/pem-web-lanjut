@@ -159,6 +159,8 @@ class UserController extends Controller
         return view('user.show', ['breadcrumb' => $breadcrumb, 'page' => $page, 'user' => $user, 'activeMenu' => $activeMenu]);
     }
 
+    
+
     public function edit(string $id)
     {
         $user = UserModel::find($id);
