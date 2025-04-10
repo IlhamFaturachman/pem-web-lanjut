@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LevelModel;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -33,12 +36,44 @@ class AuthController extends Controller
         }
         return redirect('login');
     }
-    
+
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('login');
+    }
+
+    // === Tambahan ===
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+    public function postregister(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|unique:m_user,username',
+            'nama' => 'required|string|max:255',
+            'password' => 'required|min:6|confirmed'
+        ]);
+
+        // Cari level dengan kode CUS
+        $level = LevelModel::where('level_kode', 'CUS')->first();
+
+        if (!$level) {
+            return back()->withErrors(['level' => 'Level dengan kode CUS tidak ditemukan.']);
+        }
+
+        $user = new UserModel();
+        $user->username = $request->username;
+        $user->nama = $request->nama;
+        $user->password = $request->password;
+        $user->level_id = $level->level_id;
+        $user->save();
+
+        return redirect('login')->with('success', 'Registrasi berhasil, silakan login!');
     }
 }

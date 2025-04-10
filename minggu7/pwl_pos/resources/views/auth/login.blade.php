@@ -49,9 +49,7 @@
                     </div>
                     <div class="row">
                         <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember"><label for="remember">Remember Me</label>
-                            </div>
+                            <a href="{{ route('register') }}" class="text-center">Belum punya akun? Daftar sekarang</a>
                         </div>
                         <!-- /.col -->
                         <div class="col-4">

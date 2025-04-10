@@ -65,3 +65,18 @@ Pada tugas kali ini, saya telah melakukan implementasi middleware Multi - Author
 2. Saya Menambahkan authorization pada routing saya, agar saya bisa mengatur halaman apa saja dan route apa saja yang bisa diakses oleh role user tertentu
 3. Dan jika user yang login authorization nya tidak sesuai maka yang akan terjadi adalah muncul halaman 403 forbidden
 
+
+## 📌 Tugas 4 - Menambahkan proses register
+
+### 📝Deskripsi
+Pada tugas kali ini, saya telah melakukan implementasi proses register pada program saya, dimana step step nya adalah
+
+1. Saya Menambahkan halaman register
+2. Saya Menambahkan proses register pada controller
+3. Saya Menambahkan routing pada web.php untuk register user
+4. dan saya juga menambahkan beberapa validasi seperti re-type password
+5. Saya membuat ketika user pertama kali login otomatis menjadi customer, dan nantinya bisa diubah rolenya oleh admin
+
+![Register](Screenshot%20Laporan/Tugas4/t-1.png)
+
+
