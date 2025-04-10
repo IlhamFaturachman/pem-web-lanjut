@@ -30,3 +30,10 @@ Pada tugas kali ini, saya telah melakukan implementasi login dan logout, dimana 
 ![Login](Screenshot%20Laporan/Tugas1/t-3.png)
 
 
+## 📌 Praktikum 3 - Mengimplementasikan middleware Authorization untuk tiap user yang login
+
+### 📝Deskripsi
+Pada praktikum kali ini, saya menambahkan middleware Authorization untuk tiap user yang login, agar user yang tidak sesuai rolenya tidak bisa mengakses halaman yang sudah saya set rolenya
+
+![Login](Screenshot%20Laporan/Praktikum2/p-1.png)
+
