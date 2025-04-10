@@ -47,4 +47,18 @@ Pada tugas kali ini, saya menambahkan proses export data ke PDF pada program say
 ### 📝Hasil
 ![Data Hasil Export PDF](Screenshot%20Laporan/Tugas3/t-1.png)
 
+## 📌 Tugas 4 - Menambahkan proses upload foto profil ke tiap user
+
+### 📝Deskripsi
+Pada tugas kali ini, saya menambahkan proses upload foto profil ke tiap user yang bisa dilakukan oleh admin, dimana step step nya adalah
+
+1. Saya Menambahkan migrations baru untuk mengubah tabel m_user dikarenakan belum ada kolom untuk menyimpan foto disana.
+2. Saya Menambahkan proses upload foto profil pada create_ajax user dan edit_ajax user, serta saya juga menampilkan foto user pada datatable.
+3. Saya membuat ketika admin upload foto profil user, maka hanya nama dari foto tersebut yang akan disimpan pada database, dan yang file fotonya akan disimpan secara lokal.
+
+### 📝Hasil
+![Foto pada datatables](Screenshot%20Laporan/Tugas4/t-1.png)
+![Modal Tambah](Screenshot%20Laporan/Tugas4/t-2.png)
+![Modal Edit](Screenshot%20Laporan/Tugas4/t-3.png)
+
 

@@ -1,4 +1,4 @@
-<form action="{{ url('/user/ajax') }}" method="POST" id="form-tambah">
+<form action="{{ url('/user/ajax') }}" method="POST" id="form-tambah" enctype="multipart/form-data">
     @csrf
     <div id="modal-master" class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -35,6 +35,11 @@
                     <input value="" type="password" name="password" id="password" class="form-control" required>
                     <small id="error-password" class="error-text form-text text-danger"></small>
                 </div>
+                <div class="form-group">
+                    <label>Foto Profil</label>
+                    <input type="file" name="profile_pic" id="profile_pic" class="form-control">
+                    <small id="error-profile_pic" class="error-text form-text text-danger"></small>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-warning">Batal</button>
@@ -68,10 +73,14 @@
                 }
             },
             submitHandler: function(form) {
+                var formData = new FormData(form);
+
                 $.ajax({
                     url: form.action,
                     type: form.method,
-                    data: $(form).serialize(),
+                    data: formData,
+                    processData: false, // penting untuk FormData
+                    contentType: false, // penting untuk FormData
                     success: function(response) {
                         if (response.status) {
                             $('#myModal').modal('hide');
@@ -94,6 +103,7 @@
                         }
                     }
                 });
+
                 return false;
             },
             errorElement: 'span',

@@ -18,6 +18,7 @@ class UserModel extends Authenticatable
         'username',
         'nama',
         'password',
+        'profile_pic',
         'created_at',
         'updated_at',
     ];

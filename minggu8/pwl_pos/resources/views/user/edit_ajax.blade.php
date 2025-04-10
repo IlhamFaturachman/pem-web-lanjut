@@ -15,7 +15,7 @@
     </div>
 </div>
 @else
-<form action="{{ url('/user/' . $user->user_id.'/update_ajax') }}" method="POST" id="form-edit">
+<form action="{{ url('/user/' . $user->user_id.'/update_ajax') }}" method="POST" enctype="multipart/form-data" id="form-edit">
     @csrf
     @method('PUT')
     <div id="modal-master" class="modal-dialog modal-lg" role="document">
@@ -55,6 +55,20 @@
                         password</small>
                     <small id="error-password" class="error-text form-text textdanger"></small>
                 </div>
+                <div class="form-group">
+                    <label>Foto Profil</label><br>
+                    @php
+                    $foto = $user->profile_pic ? asset('uploads/profile/' . $user->profile_pic) : asset('placeholder.png');
+                    @endphp
+                    <img src="{{ $foto }}" alt="Foto Profil" width="100" height="100" style="object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+                </div>
+                <div class="form-group">
+                    <label>Ganti Foto (opsional)</label>
+                    <input type="file" name="profile_pic" class="form-control">
+                    <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengganti foto</small>
+                    <small id="error-profile_pic" class="error-text form-text text-danger"></small>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btnwarning">Batal</button>
@@ -87,10 +101,15 @@
                 }
             },
             submitHandler: function(form) {
+                // Buat objek FormData dari form
+                var formData = new FormData(form);
+
                 $.ajax({
                     url: form.action,
                     type: form.method,
-                    data: $(form).serialize(),
+                    data: formData,
+                    processData: false, // jangan mengkonversi data menjadi query string
+                    contentType: false, // biarkan browser atur content type (multipart/form-data)
                     success: function(response) {
                         if (response.status) {
                             $('#myModal').modal('hide');

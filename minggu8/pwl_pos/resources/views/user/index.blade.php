@@ -7,7 +7,7 @@
     <div class="card-tools">
       <a class="btn btn-sm btn-primary mt-1" href="{{ url('user/create') }}">Tambah</a>
       <button onclick="modalAction('{{ url('user/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah Ajax</button>
-      </div>
+    </div>
   </div>
   <div class="card-body">
     @if (session('success'))
@@ -36,6 +36,7 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>Foto</th>
           <th>Username</th>
           <th>Nama</th>
           <th>Level Pengguna</th>
@@ -77,6 +78,13 @@
         data: "DT_RowIndex",
         className: "text-center",
         orderable: false,
+        searchable: false
+      }, {
+        data: "foto",
+        className: "",
+        // orderable: false, jika ingin kolom ini bisa diurutkan  
+        orderable: false,
+        // searchable: false, jika ingin kolom ini bisa dicari 
         searchable: false
       }, {
         data: "username",
