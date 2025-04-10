@@ -55,3 +55,13 @@ Pada tugas kali ini, saya telah melakukan implementasi middleware Authorization 
 Pada praktikum kali ini, saya menambahkan middleware Multi - Authorization untuk tiap user yang login, agar user yang tidak sesuai rolenya tidak bisa mengakses halaman yang sudah saya set rolenya, dan pada praktikum kali ini saya berhasil menambah role lain agar bisa mengakses halaman tersebut
 
 ![Multi Level Auth](Screenshot%20Laporan/Praktikum3/p-1.png)
+
+## 📌 Tugas 3 - Implementasi middleware Multi - Authorization pada program saya
+
+### 📝Deskripsi
+Pada tugas kali ini, saya telah melakukan implementasi middleware Multi - Authorization pada program saya, dimana step step nya adalah
+
+1. Saya Menambahkan middleware multi - authorization untuk setiap user yang login
+2. Saya Menambahkan authorization pada routing saya, agar saya bisa mengatur halaman apa saja dan route apa saja yang bisa diakses oleh role user tertentu
+3. Dan jika user yang login authorization nya tidak sesuai maka yang akan terjadi adalah muncul halaman 403 forbidden
+
