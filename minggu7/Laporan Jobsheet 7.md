@@ -30,10 +30,21 @@ Pada tugas kali ini, saya telah melakukan implementasi login dan logout, dimana 
 ![Login](Screenshot%20Laporan/Tugas1/t-3.png)
 
 
-## 📌 Praktikum 3 - Mengimplementasikan middleware Authorization untuk tiap user yang login
+## 📌 Praktikum 2 - Mengimplementasikan middleware Authorization untuk tiap user yang login
 
 ### 📝Deskripsi
 Pada praktikum kali ini, saya menambahkan middleware Authorization untuk tiap user yang login, agar user yang tidak sesuai rolenya tidak bisa mengakses halaman yang sudah saya set rolenya
 
 ![Login](Screenshot%20Laporan/Praktikum2/p-1.png)
 
+
+## 📌 Tugas 2 - Implementasi middleware Authorization pada program saya
+
+### 📝Deskripsi
+Pada tugas kali ini, saya telah melakukan implementasi middleware Authorization pada program saya, dan yang bisa saya pahami adalah saya berhasil memberikan authorization alias halaman apa saja dan route apa saja yang bisa diakses oleh role user tertentu. dimana step step nya adalah
+
+1. Saya Menambahkan middleware authorization untuk setiap user yang login
+2. Saya Menambahkan authorization pada routing saya, agar saya bisa mengatur halaman apa saja dan route apa saja yang bisa diakses oleh role user tertentu
+3. Dan jika user yang login authorization nya tidak sesuai maka yang akan terjadi adalah muncul halaman 403 forbidden
+
+![Forbidden](Screenshot%20Laporan/Praktikum2/p-1.png)
