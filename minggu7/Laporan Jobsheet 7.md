@@ -48,3 +48,10 @@ Pada tugas kali ini, saya telah melakukan implementasi middleware Authorization 
 3. Dan jika user yang login authorization nya tidak sesuai maka yang akan terjadi adalah muncul halaman 403 forbidden
 
 ![Forbidden](Screenshot%20Laporan/Praktikum2/p-1.png)
+
+## 📌 Praktikum 3 - Mengimplementasikan middleware Multi - Authorization untuk tiap user yang login
+
+### 📝Deskripsi
+Pada praktikum kali ini, saya menambahkan middleware Multi - Authorization untuk tiap user yang login, agar user yang tidak sesuai rolenya tidak bisa mengakses halaman yang sudah saya set rolenya, dan pada praktikum kali ini saya berhasil menambah role lain agar bisa mengakses halaman tersebut
+
+![Multi Level Auth](Screenshot%20Laporan/Praktikum3/p-1.png)

@@ -28,7 +28,7 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth')->nam
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [WelcomeController::class, 'index']);
 
-    Route::middleware(['authorize:ADM'])->group(function () {
+    Route::middleware(['authorize:ADM,MNG'])->group(function () {
         Route::group(['prefix' => 'user'], function () {
             Route::get('/',[UserController::class,'index']);
             Route::post('/list',[UserController::class,'list']); 
