@@ -129,6 +129,8 @@ Route::middleware(['auth'])->group(function () {
         Route::group(['prefix' => 'stok'], function () {
             Route::get('/',[StokController::class,'index']);
             Route::post('/list',[StokController::class,'list']); 
+            Route::get('/summary',[StokController::class,'summary']);
+            Route::get('/export_excel',[StokController::class,'export_stok_summary']);
             Route::get('/create_ajax',[StokController::class,'create_ajax']);
             Route::post('/ajax',[StokController::class,'store_ajax']);
             Route::get('/{id}',[StokController::class,'show']);

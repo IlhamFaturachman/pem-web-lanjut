@@ -32,6 +32,20 @@
         </div>
     </div>
 
+    <div class="row mx-3 mb-3">
+        <div class="col-md-12">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Ringkasan Stok Barang Saat Ini</h3>
+                    <a href="{{ url('/stok/export_excel') }}" class="btn btn-success btn-sm ml-1">Export Excel</a>
+                </div>
+                <div class="card-body" id="stok-summary">
+                    <div class="text-muted">Memuat data...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="card-body">
         <table class="table table-bordered table-striped table-hover table-sm" id="table_stok">
             <thead>
@@ -40,6 +54,7 @@
                     <th>Nama Barang</th>
                     <th>Kategori</th>
                     <th>Jumlah Stok</th>
+                    <th>Jenis</th>
                     <th>Tanggal Stok Masuk</th>
                     <th>Diinput Oleh</th>
                     <th>Aksi</th>
@@ -93,6 +108,10 @@
                     orderable: true
                 },
                 {
+                    data: "stok_jenis",
+                    className: "text-center"
+                },
+                {
                     data: "stok_tanggal",
                     className: "text-center",
                     orderable: true
@@ -111,6 +130,34 @@
 
         $('#kategori_id').on('change', function() {
             dataStok.ajax.reload();
+        });
+    });
+
+    $(document).ready(function() {
+        $.getJSON('/stok/summary', function(data) {
+            let html = `
+            <table class="table table-bordered table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nama Barang</th>
+                        <th>Kondisi Stok Sekarang</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            data.forEach(item => {
+                let badgeClass = item.status === 'Hampir Habis' ? 'danger' : 'success';
+                html += `
+                <tr>
+                    <td>${item.barang_name}</td>
+                    <td><strong>${item.total_stok}</strong></td>
+                    <td><span class="badge bg-${badgeClass}">${item.status}</span></td>
+                </tr>`;
+            });
+
+            html += `</tbody></table>`;
+            $('#stok-summary').html(html);
         });
     });
 </script>
