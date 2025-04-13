@@ -9,6 +9,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
 
 class BarangController extends Controller
 {
@@ -31,7 +32,7 @@ class BarangController extends Controller
 
     public function list(Request $request)
     {
-        $barangs = BarangModel::select('barang_id', 'kategori_id', 'barang_kode', 'barang_name', 'harga_beli', 'harga_jual')
+        $barangs = BarangModel::select('barang_id', 'kategori_id', 'barang_kode', 'barang_name', 'barang_pic', 'harga_beli', 'harga_jual')
             ->with('kategori');
 
         if ($request->kategori_id) {
@@ -40,6 +41,13 @@ class BarangController extends Controller
 
         return DataTables::of($barangs)
             ->addIndexColumn()
+            ->addColumn('barang_pic', function ($barang) {
+                $url = $barang->barang_pic
+                    ? asset('uploads/barang/' . $barang->barang_pic)
+                    : asset('placeholder.png'); // pastikan placeholder ini ada
+
+                return '<img src="' . $url . '" width="100" height="100%" style="object-fit: cover;">';
+            })
             ->addColumn('aksi', function ($barang) {
                 $btn = '<button onclick="modalAction(\'' . url('/barang/' . $barang->barang_id .
                     '/show_ajax') . '\')" class="btn btn-info btn-sm">Detail</button> ';
@@ -49,7 +57,7 @@ class BarangController extends Controller
                     '/delete_ajax') . '\')" class="btn btn-danger btn-sm">Hapus</button> ';
                 return $btn;
             })
-            ->rawColumns(['aksi'])
+            ->rawColumns(['aksi', 'barang_pic'])
             ->make(true);
     }
 
@@ -172,36 +180,59 @@ class BarangController extends Controller
 
     public function store_ajax(Request $request)
     {
-        // cek apakah request berupa ajax
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
                 'kategori_id' => 'required|integer|exists:m_kategori,kategori_id',
                 'barang_kode' => 'required|string|max:10|unique:m_barang,barang_kode',
                 'barang_name' => 'required|string|max:100',
-                'harga_beli' => 'required|integer',
-                'harga_jual' => 'required|integer',
+                'harga_beli'  => 'required|integer',
+                'harga_jual'  => 'required|integer',
+                'barang_pic'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // validasi file
             ];
 
-            // use Illuminate\Support\Facades\Validator;
             $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
                 return response()->json([
-                    'status' => false, // response status, false: error/gagal, true: berhasil
+                    'status' => false,
                     'message' => 'Validasi Gagal',
-                    'msgField' => $validator->errors(), // pesan error validasi
+                    'msgField' => $validator->errors(),
                 ]);
             }
 
-            BarangModel::create($request->all());
+            $data = $request->only([
+                'kategori_id',
+                'barang_kode',
+                'barang_name',
+                'harga_beli',
+                'harga_jual'
+            ]);
+
+            // Cek jika ada file barang_pic
+            if ($request->hasFile('barang_pic')) {
+                $file = $request->file('barang_pic');
+
+                // Buat nama file unik
+                $filename = 'barang_' . time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+
+                // Simpan ke folder public/uploads/barang/
+                $file->move(public_path('uploads/barang'), $filename);
+
+                // Tambahkan nama file ke dalam data
+                $data['barang_pic'] = $filename;
+            }
+
+            BarangModel::create($data);
+
             return response()->json([
                 'status' => true,
                 'message' => 'Data barang berhasil disimpan'
             ]);
         }
 
-        redirect('/');
+        return redirect('/');
     }
+
 
     public function show_ajax(string $id)
     {
@@ -227,7 +258,6 @@ class BarangController extends Controller
 
     public function update_ajax(Request $request, $id)
     {
-        // cek apakah request dari ajax
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
                 'kategori_id' => 'required|integer|exists:m_kategori,kategori_id',
@@ -235,33 +265,66 @@ class BarangController extends Controller
                 'barang_name' => 'required|string|max:100',
                 'harga_beli' => 'required|integer',
                 'harga_jual' => 'required|integer',
+                'barang_pic' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
             ];
-            // use Illuminate\Support\Facades\Validator;
+
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return response()->json([
-                    'status' => false, // respon json, true: berhasil, false: gagal
+                    'status' => false,
                     'message' => 'Validasi gagal.',
-                    'msgField' => $validator->errors() // menunjukkan field mana yang error
+                    'msgField' => $validator->errors()
                 ]);
             }
-            $check = BarangModel::find($id);
-            if ($check) {
-                $check->update($request->all());
-                return response()->json([
-                    'status' => true,
-                    'message' => 'Data berhasil diupdate'
-                ]);
-            } else {
+
+            $barang = BarangModel::find($id);
+            if (!$barang) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Data tidak ditemukan'
                 ]);
             }
+
+            // Siapkan data yang akan diupdate
+            $data = [
+                'kategori_id' => $request->kategori_id,
+                'barang_kode' => $request->barang_kode,
+                'barang_name' => $request->barang_name,
+                'harga_beli' => $request->harga_beli,
+                'harga_jual' => $request->harga_jual,
+            ];
+
+            // Cek jika ada file barang_pic
+            if ($request->hasFile('barang_pic')) {
+                $file = $request->file('barang_pic');
+
+                // Hapus file lama jika ada
+                if ($barang->barang_pic && file_exists(public_path('uploads/barang/' . $barang->barang_pic))) {
+                    unlink(public_path('uploads/barang/' . $barang->barang_pic));
+                }
+
+                // Buat nama file unik
+                $filename = 'barang_' . time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+
+                // Simpan ke folder public/uploads/barang/
+                $file->move(public_path('uploads/barang'), $filename);
+
+                // Tambahkan nama file ke dalam data
+                $data['barang_pic'] = $filename;
+            }
+
+            // Lakukan update
+            $barang->update($data);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Data berhasil diupdate'
+            ]);
         }
 
-        redirect('/');
+        return redirect('/');
     }
+
 
     public function confirm_ajax(string $id)
     {

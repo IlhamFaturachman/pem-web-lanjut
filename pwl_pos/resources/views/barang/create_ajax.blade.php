@@ -1,33 +1,52 @@
-<form action="{{ url('/stok/ajax') }}" method="POST" id="form-tambah-stok">
+<form action="{{ url('/barang/ajax') }}" method="POST" id="form-tambah" enctype="multipart/form-data">
     @csrf
-    <div id="modal-master" class="modal-dialog modal-md" role="document">
+    <div id="modal-master" class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Stok Barang</h5>
+                <h5 class="modal-title">Tambah Data Barang</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Barang</label>
-                    <select name="barang_id" id="barang_id" class="form-control" required>
-                        <option value="">- Pilih Barang -</option>
-                        @foreach ($barang as $item)
-                            <option value="{{ $item->barang_id }}">{{ $item->barang_kode }} - {{ $item->barang_name }}</option>
+                    <label>Kategori</label>
+                    <select name="kategori_id" id="kategori_id" class="form-control" required>
+                        <option value="">- Pilih Kategori -</option>
+                        @foreach ($kategori as $item)
+                        <option value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
                         @endforeach
                     </select>
-                    <small id="error-barang_id" class="error-text form-text text-danger"></small>
+                    <small id="error-kategori_id" class="error-text form-text text-danger"></small>
                 </div>
                 <div class="form-group">
-                    <label>Jumlah Stok</label>
-                    <input type="number" name="stok_jumlah" id="stok_jumlah" class="form-control" min="1" required>
-                    <small id="error-stok_jumlah" class="error-text form-text text-danger"></small>
+                    <label>Kode Barang</label>
+                    <input type="text" name="barang_kode" id="barang_kode" class="form-control" required>
+                    <small id="error-barang_kode" class="error-text form-text text-danger"></small>
                 </div>
                 <div class="form-group">
-                    <label>Tanggal Stok</label>
-                    <input type="date" name="stok_tanggal" id="stok_tanggal" class="form-control" required>
-                    <small id="error-stok_tanggal" class="error-text form-text text-danger"></small>
+                    <label>Nama Barang</label>
+                    <input type="text" name="barang_name" id="barang_name" class="form-control" required>
+                    <small id="error-barang_name" class="error-text form-text text-danger"></small>
+                </div>
+                <div class="form-group">
+                    <label>Harga Beli</label>
+                    <input type="number" name="harga_beli" id="harga_beli" class="form-control" required>
+                    <small id="error-harga_beli" class="error-text form-text text-danger"></small>
+                </div>
+                <div class="form-group">
+                    <label>Harga Jual</label>
+                    <input type="number" name="harga_jual" id="harga_jual" class="form-control" required>
+                    <small id="error-harga_jual" class="error-text form-text text-danger"></small>
+                </div>
+                <div class="form-group">
+                    <label>Foto Barang (Opsional)</label>
+                    <input type="file" name="barang_pic" id="barang_pic" class="form-control-file" accept="image/*">
+                    <small id="error-barang_pic" class="error-text form-text text-danger"></small>
+
+                    <div class="mt-2">
+                        <img id="preview-barang-pic" src="#" alt="Preview Foto" class="img-thumbnail" style="display: none; max-width: 200px;">
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -40,17 +59,38 @@
 
 <script>
     $(document).ready(function() {
-        $("#form-tambah-stok").validate({
+        $("#form-tambah").validate({
             rules: {
-                barang_id: { required: true },
-                stok_jumlah: { required: true, min: 1 },
-                stok_tanggal: { required: true },
+                kategori_id: {
+                    required: true
+                },
+                barang_kode: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 10
+                },
+                barang_name: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 50
+                },
+                harga_beli: {
+                    required: true,
+                    min: 0
+                },
+                harga_jual: {
+                    required: true,
+                    min: 0
+                }
             },
             submitHandler: function(form) {
+                const formData = new FormData(form);
                 $.ajax({
                     url: form.action,
                     type: form.method,
-                    data: $(form).serialize(),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function(response) {
                         if (response.status) {
                             $('#myModal').modal('hide');
@@ -59,7 +99,7 @@
                                 title: 'Berhasil',
                                 text: response.message
                             });
-                            dataBarang.ajax.reload(); // reload list jika perlu
+                            dataBarang.ajax.reload();
                         } else {
                             $('.error-text').text('');
                             $.each(response.msgField, function(prefix, val) {
@@ -73,6 +113,7 @@
                         }
                     }
                 });
+
                 return false;
             },
             errorElement: 'span',
@@ -80,11 +121,34 @@
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
             },
-            highlight: function(element) {
+            highlight: function(element, errorClass, validClass) {
                 $(element).addClass('is-invalid');
             },
-            unhighlight: function(element) {
+            unhighlight: function(element, errorClass, validClass) {
                 $(element).removeClass('is-invalid');
+            }
+        });
+
+        $('#barang_pic').on('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#preview-barang-pic')
+                        .attr('src', e.target.result)
+                        .show();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                $('#preview-barang-pic').hide();
+            }
+        });
+
+        $('#barang_pic').on('change', function() {
+            const file = this.files[0];
+            if (file && !['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
+                alert('Format gambar tidak valid! Hanya JPG/PNG.');
+                $(this).val('');
             }
         });
     });

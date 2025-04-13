@@ -15,7 +15,7 @@
     </div>
 </div>
 @else
-<form action="{{ url('/barang/' . $barang->barang_id . '/update_ajax') }}" method="POST" id="form-edit-barang">
+<form action="{{ url('/barang/' . $barang->barang_id . '/update_ajax') }}" method="POST" id="form-edit-barang" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div id="modal-master" class="modal-dialog modal-lg" role="document">
@@ -30,9 +30,9 @@
                     <select name="kategori_id" id="kategori_id" class="form-control" required>
                         <option value="">- Pilih Kategori -</option>
                         @foreach ($kategori as $item)
-                            <option value="{{ $item->kategori_id }}" {{ $barang->kategori_id == $item->kategori_id ? 'selected' : '' }}>
-                                {{ $item->kategori_nama }}
-                            </option>
+                        <option value="{{ $item->kategori_id }}" {{ $barang->kategori_id == $item->kategori_id ? 'selected' : '' }}>
+                            {{ $item->kategori_nama }}
+                        </option>
                         @endforeach
                     </select>
                     <small id="error-kategori_id" class="error-text form-text text-danger"></small>
@@ -57,6 +57,17 @@
                     <input value="{{ $barang->harga_jual }}" type="number" name="harga_jual" id="harga_jual" class="form-control" required>
                     <small id="error-harga_jual" class="error-text form-text text-danger"></small>
                 </div>
+                <div class="form-group">
+                    <label>Foto Barang</label><br>
+                    @if ($barang->barang_pic)
+                    <img src="{{ asset('uploads/barang/' . $barang->barang_pic) }}" alt="Foto" width="100" class="img-thumbnail mb-2">
+                    @endif
+                    <input type="file" name="barang_pic" id="barang_pic" class="form-control-file" accept="image/*">
+                    <div class="mt-2">
+                        <img id="preview-barang-pic" src="#" alt="Preview Foto" class="img-thumbnail" style="display: none; max-width: 200px;">
+                    </div>
+                    <small id="error-barang_pic" class="error-text form-text text-danger"></small>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-warning">Batal</button>
@@ -70,17 +81,37 @@
     $(document).ready(function() {
         $("#form-edit-barang").validate({
             rules: {
-                kategori_id: { required: true },
-                barang_kode: { required: true, minlength: 2, maxlength: 10 },
-                barang_name: { required: true, minlength: 3, maxlength: 50 },
-                harga_beli: { required: true, min: 0 },
-                harga_jual: { required: true, min: 0 }
+                kategori_id: {
+                    required: true
+                },
+                barang_kode: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 10
+                },
+                barang_name: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 50
+                },
+                harga_beli: {
+                    required: true,
+                    min: 0
+                },
+                harga_jual: {
+                    required: true,
+                    min: 0
+                }
             },
             submitHandler: function(form) {
+                let formData = new FormData(form);
+
                 $.ajax({
                     url: form.action,
                     type: form.method,
-                    data: $(form).serialize(),
+                    data: formData,
+                    contentType: false,
+                    processData: false,
                     success: function(response) {
                         if (response.status) {
                             $('#myModal').modal('hide');
@@ -115,6 +146,29 @@
             },
             unhighlight: function(element) {
                 $(element).removeClass('is-invalid');
+            }
+        });
+
+        $('#barang_pic').on('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#preview-barang-pic')
+                        .attr('src', e.target.result)
+                        .show();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                $('#preview-barang-pic').hide();
+            }
+        });
+
+        $('#barang_pic').on('change', function() {
+            const file = this.files[0];
+            if (file && !['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
+                alert('Format gambar tidak valid! Hanya JPG/PNG.');
+                $(this).val('');
             }
         });
     });

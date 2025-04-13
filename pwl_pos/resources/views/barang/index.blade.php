@@ -37,6 +37,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Foto</th>
                     <th>Kode Barang</th>
                     <th>Nama Barang</th>
                     <th>Kategori</th>
@@ -74,6 +75,11 @@
             columns: [{
                 data: "DT_RowIndex",
                 className: "text-center",
+                orderable: false,
+                searchable: false
+            },{
+                data: "barang_pic",
+                className: "",
                 orderable: false,
                 searchable: false
             }, {

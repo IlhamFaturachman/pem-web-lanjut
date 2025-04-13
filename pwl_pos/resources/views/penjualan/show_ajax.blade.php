@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <th>Petugas</th>
-                        <td>{{ $penjualan->user->name ?? '-' }}</td>
+                        <td>{{ $penjualan->user->nama ?? '-' }}</td>
                     </tr>
                     <tr>
                         <th>Dibuat Pada</th>

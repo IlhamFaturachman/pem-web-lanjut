@@ -29,7 +29,7 @@
                 <h5>Detail Barang</h5>
                 <div id="detail-penjualan">
                     <div class="row mb-2 item-barang">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <select name="barang_id[]" class="form-control barang-select" required>
                                 <option value="">- Pilih Barang -</option>
                                 @foreach ($barang as $item)
@@ -41,6 +41,9 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="col-md-2">
+                            <input type="text" name="harga[]" class="form-control harga-barang" placeholder="Harga" readonly>
+                        </div>
                         <div class="col-md-3">
                             <input type="number" name="jumlah[]" class="form-control" placeholder="Jumlah" min="1" required>
                         </div>
@@ -49,6 +52,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <button type="button" class="btn btn-secondary btn-sm mt-2" id="tambah-barang">+ Tambah Barang</button>
             </div>
@@ -71,6 +75,7 @@
             const clone = $('#detail-penjualan .item-barang:first').clone();
             clone.find('select').val('');
             clone.find('input').val('');
+            clone.find('.harga-barang').val('');
             $('#detail-penjualan').append(clone);
         });
 
@@ -99,6 +104,14 @@
                 }
             });
         });
+
+        // Saat barang dipilih, ambil harga dan isi otomatis
+        $(document).on('change', '.barang-select', function() {
+            const harga = $(this).find(':selected').data('harga') || 0;
+            const parent = $(this).closest('.item-barang');
+            parent.find('.harga-barang').val(harga);
+        });
+
 
         // Submit Ajax
         $('#form-tambah-penjualan').submit(function(e) {
