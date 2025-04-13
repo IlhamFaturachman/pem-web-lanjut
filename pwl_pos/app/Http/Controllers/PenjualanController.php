@@ -170,4 +170,23 @@ class PenjualanController extends Controller
             ]);
         }
     }
+
+    public function show_ajax(string $id)
+    {
+        $penjualan = PenjualanModel::with([
+            'user', // jika ingin tampilkan siapa yang input
+            'details.barang' // relasi ke detail + barang
+        ])->find($id);
+
+        if (!$penjualan) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Data penjualan tidak ditemukan'
+            ], 404);
+        }
+
+        return view('penjualan.show_ajax', [
+            'penjualan' => $penjualan
+        ]);
+    }
 }
