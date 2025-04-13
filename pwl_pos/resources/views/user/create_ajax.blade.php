@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label>Foto Profil</label>
-                    <input type="file" name="profile_pic" id="profile_pic" class="form-control">
+                    <input type="file" name="profile_pic" id="profile_pic" class="form-control" accept="image/*">
                     <small id="error-profile_pic" class="error-text form-text text-danger"></small>
                 </div>
             </div>

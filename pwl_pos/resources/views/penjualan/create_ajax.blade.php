@@ -29,7 +29,7 @@
                 <h5>Detail Barang</h5>
                 <div id="detail-penjualan">
                     <div class="row mb-2 item-barang">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <select name="barang_id[]" class="form-control barang-select" required>
                                 <option value="">- Pilih Barang -</option>
                                 @foreach ($barang as $item)
@@ -42,18 +42,19 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <input type="text" name="harga[]" class="form-control harga-barang" placeholder="Harga" readonly>
+                            <input type="text" name="harga_view[]" class="form-control harga-barang" placeholder="Harga" readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" name="jumlah[]" class="form-control jumlah-barang" placeholder="Jumlah" min="1" required>
                         </div>
                         <div class="col-md-3">
-                            <input type="number" name="jumlah[]" class="form-control" placeholder="Jumlah" min="1" required>
+                            <input type="text" name="total_view[]" class="form-control total-barang" placeholder="Total" readonly>
                         </div>
-                        <div class="col-md-3 d-flex align-items-start">
+                        <div class="col-md-2 d-flex align-items-start">
                             <button type="button" class="btn btn-danger btn-sm mt-1 remove-barang">Hapus</button>
                         </div>
                     </div>
                 </div>
-
-
                 <button type="button" class="btn btn-secondary btn-sm mt-2" id="tambah-barang">+ Tambah Barang</button>
             </div>
 
@@ -105,13 +106,33 @@
             });
         });
 
-        // Saat barang dipilih, ambil harga dan isi otomatis
+        // Format angka ke rupiah
+        function formatRupiah(angka) {
+            return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        // Saat barang dipilih → isi harga
         $(document).on('change', '.barang-select', function() {
             const harga = $(this).find(':selected').data('harga') || 0;
             const parent = $(this).closest('.item-barang');
-            parent.find('.harga-barang').val(harga);
+            parent.find('.harga-barang').val(formatRupiah(harga));
+            parent.find('.harga-barang').data('harga-asli', harga);
+            updateTotal(parent);
         });
 
+        // Saat jumlah berubah → update total
+        $(document).on('input', '.jumlah-barang', function() {
+            const parent = $(this).closest('.item-barang');
+            updateTotal(parent);
+        });
+
+        // Fungsi hitung total per item
+        function updateTotal(parent) {
+            const harga = parseInt(parent.find('.harga-barang').data('harga-asli')) || 0;
+            const jumlah = parseInt(parent.find('.jumlah-barang').val()) || 0;
+            const total = harga * jumlah;
+            parent.find('.total-barang').val(formatRupiah(total));
+        }
 
         // Submit Ajax
         $('#form-tambah-penjualan').submit(function(e) {

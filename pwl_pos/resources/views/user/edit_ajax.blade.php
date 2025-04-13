@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group">
                     <label>Ganti Foto (opsional)</label>
-                    <input type="file" name="profile_pic" class="form-control">
+                    <input type="file" name="profile_pic" class="form-control" accept="image/*">
                     <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengganti foto</small>
                     <small id="error-profile_pic" class="error-text form-text text-danger"></small>
                 </div>

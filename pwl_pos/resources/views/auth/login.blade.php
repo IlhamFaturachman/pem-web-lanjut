@@ -54,14 +54,14 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
+                    <h1>Selamat Datang Kembali!</h1>
+                    <p>Untuk melanjutkan, silakan masuk dengan informasi akun Anda.</p>
+                    <button class="ghost" id="signIn">Masuk</button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <h1>Selamat Datang!</h1>
+                    <p>Bergabunglah dengan kami dan kelola penjualanmu dengan lebih mudah dan efisien. Daftar sekarang untuk menikmati semua fitur aplikasi POS yang memudahkan bisnismu!</p>
+                    <button class="ghost" id="signUp">Daftar Sekarang</button>
                 </div>
             </div>
         </div>
