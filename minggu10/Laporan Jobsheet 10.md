@@ -17,3 +17,15 @@ Pada praktikum kali ini, saya membuat RESTful API Register, dimana terdapat erro
 
 ### Hasil dengan payload
 ![Hasil](Screenshot%20Laporan/Praktikum1/p2.png)
+
+## 📌 Praktikum 2 - Membuat RESTful API Login
+
+### 📝Deskripsi
+Pada praktikum kali ini, saya membuat RESTful API Login, dimana terdapat error atau problem dikarenakan saya melakukan proses request pada API tanpa memberikan data atau payload. namun pada percobaan kedua saya menambahkan payload pada bodynya sehingga berhasil login
+
+### Error Karena tidak ada payload
+![Error Karena tidak ada payload](Screenshot%20Laporan/Praktikum2/p1.png)
+
+### Hasil dengan payload
+![Hasil](Screenshot%20Laporan/Praktikum2/p2.png)
+
