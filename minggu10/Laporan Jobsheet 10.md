@@ -32,4 +32,13 @@ Pada praktikum kali ini, saya membuat RESTful API Login, dimana terdapat error a
 ### Hasil dengan Bearer token
 ![Hasil](Screenshot%20Laporan/Praktikum2/p3.png)
 
+## 📌 Praktikum 3 - Membuat RESTful API Logout
+
+### 📝Deskripsi
+Pada praktikum kali ini, saya membuat RESTful API Logout, dimana saya membutuhkan Bearer token yang didapatkan ketika login tadi
+
+### Berhasil Logout
+![Berhasil Logout](Screenshot%20Laporan/Praktikum3/p1.png)
+
+
 
