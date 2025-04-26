@@ -21,11 +21,15 @@ Pada praktikum kali ini, saya membuat RESTful API Register, dimana terdapat erro
 ## 📌 Praktikum 2 - Membuat RESTful API Login
 
 ### 📝Deskripsi
-Pada praktikum kali ini, saya membuat RESTful API Login, dimana terdapat error atau problem dikarenakan saya melakukan proses request pada API tanpa memberikan data atau payload. namun pada percobaan kedua saya menambahkan payload pada bodynya sehingga berhasil login
+Pada praktikum kali ini, saya membuat RESTful API Login, dimana terdapat error atau problem dikarenakan saya melakukan proses request pada API tanpa memberikan data atau payload. namun pada percobaan kedua saya menambahkan payload pada bodynya sehingga berhasil login. Dan pada percobaan kali ini saya mencoba untuk mendapatkan data user yang login menggunakan Bearer token yang didapatkan ketika login tadi
 
 ### Error Karena tidak ada payload
 ![Error Karena tidak ada payload](Screenshot%20Laporan/Praktikum2/p1.png)
 
 ### Hasil dengan payload
 ![Hasil](Screenshot%20Laporan/Praktikum2/p2.png)
+
+### Hasil dengan Bearer token
+![Hasil](Screenshot%20Laporan/Praktikum2/p3.png)
+
 
