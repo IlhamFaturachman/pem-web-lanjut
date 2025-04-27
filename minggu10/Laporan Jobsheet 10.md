@@ -40,5 +40,25 @@ Pada praktikum kali ini, saya membuat RESTful API Logout, dimana saya membutuhka
 ### Berhasil Logout
 ![Berhasil Logout](Screenshot%20Laporan/Praktikum3/p1.png)
 
+## 📌 Praktikum 4 - Membuat CRUD dengan RESTful API Untuk level
+
+### 📝Deskripsi
+Pada praktikum kali ini, saya membuat proses CRUD untuk level menggunakan RESTful API.
+
+### Get Data Level
+![Get Data Level](Screenshot%20Laporan/Praktikum4/p1.png)
+
+### Post Data Level
+![Post Data Level](Screenshot%20Laporan/Praktikum4/p2.png)
+
+### Put Data Level by ID
+![Put Data Level by ID](Screenshot%20Laporan/Praktikum4/p3.png)
+
+### Delete Data Level by ID
+![Delete Data Level by ID](Screenshot%20Laporan/Praktikum4/p4.png)
+
+
+
+
 
 
